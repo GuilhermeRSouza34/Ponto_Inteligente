@@ -8,7 +8,8 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView from 'react-native-web-maps';
+import { Marker, Polyline } from 'react-native-web-maps';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { busService } from '../services/api';
 import socketService from '../services/socket';
@@ -104,7 +105,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
             <MapView
                 ref={mapRef}
-                provider={PROVIDER_GOOGLE}
+
                 style={styles.map}
                 initialRegion={{
                     latitude: -23.550520,
@@ -228,4 +229,4 @@ const styles = StyleSheet.create({
         marginTop: 8,
         fontWeight: '500',
     },
-}); 
+});

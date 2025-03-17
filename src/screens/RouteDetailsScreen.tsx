@@ -5,7 +5,8 @@ import {
     Text,
     View
 } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView from 'react-native-web-maps';
+import { Marker } from 'react-native-web-maps';
 import { busService } from '../services/api';
 import socketService from '../services/socket';
 import { BusLocation, BusRoute } from '../types';
@@ -60,7 +61,7 @@ export const RouteDetailsScreen = ({ route }: any) => {
             </View>
 
             <MapView
-                provider={PROVIDER_GOOGLE}
+
                 style={styles.map}
                 initialRegion={{
                     latitude: busRoute.stops[0].latitude,
@@ -128,4 +129,4 @@ const styles = StyleSheet.create({
     map: {
         flex: 1,
     },
-}); 
+});
