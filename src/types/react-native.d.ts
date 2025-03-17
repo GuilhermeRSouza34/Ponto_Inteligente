@@ -19,9 +19,29 @@ declare module 'react-native-web-maps' {
     onRegionChange?: (region: any) => void;
     children?: React.ReactNode;
   }
-  export class MapView extends Component<MapViewProps> {
-    static Marker: any;
+
+  interface MarkerProps {
+    coordinate: {
+      latitude: number;
+      longitude: number;
+    };
+    title?: string;
+    description?: string;
+    onPress?: () => void;
   }
+
+  interface PolylineProps {
+    coordinates: Array<{
+      latitude: number;
+      longitude: number;
+    }>;
+    strokeColor?: string;
+    strokeWidth?: number;
+  }
+
+  export class Marker extends Component<MarkerProps> {}
+  export class Polyline extends Component<PolylineProps> {}
+  export class MapView extends Component<MapViewProps> {}
 }
 declare module '*.png';
 declare module '*.jpg';

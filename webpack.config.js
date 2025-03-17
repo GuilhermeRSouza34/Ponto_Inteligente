@@ -61,17 +61,30 @@ module.exports = {
       'react-native$': 'react-native-web',
       'react-native-gesture-handler': 'react-native-web',
       'react-native-screens': 'react-native-web',
-      'react-native-safe-area-context': 'react-native-web',
-      'react-native-maps': '@react-native-maps/maps',
+      'react-native-safe-area-context': 'react-native-web/dist/modules/SafeAreaContext',
+      'react-native-safe-area-context/lib/module/SafeAreaProvider': 'react-native-web/dist/modules/SafeAreaContext',
+      'react-native-safe-area-context/lib/module/SafeAreaInsetsContext': 'react-native-web/dist/modules/SafeAreaContext',
+      'react-native-safe-area-context/lib/module/initialWindowMetrics': 'react-native-web/dist/modules/SafeAreaContext',
+      'react-native-maps': 'react-native-web-maps',
+      '@react-native-maps/maps': 'react-native-web-maps',
+      'react-native-web-maps': { MapView: 'react-native-web-maps', Marker: 'react-native-web-maps/marker' },
+      'process': 'process/browser.js',
+      '@react-navigation/elements': '@react-navigation/elements/lib/module/index.web'
+      '@react-navigation/elements': '@react-navigation/elements/lib/module/index.native',
+      'react-native-maps': 'react-native-web-maps',
       '@react-native-firebase/app$': '@react-native-firebase/app/lib/module',
       'react-native-reanimated': 'react-native-web',
-      'react-native-vector-icons': 'react-native-vector-icons/dist'
+      'react-native-vector-icons': 'react-native-vector-icons/dist',
+      'react-native-web-maps': 'react-native-web-maps'
     },
+    modules: ['node_modules'],
     fallback: {
       'crypto': require.resolve('crypto-browserify'),
       'stream': require.resolve('stream-browserify'),
       'path': require.resolve('path-browserify'),
-      'fs': false
+      'fs': false,
+      'process': 'process/browser',
+      'buffer': 'buffer'
     }
   },
   plugins: [
@@ -83,7 +96,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __DEV__: process.env.NODE_ENV !== 'production',
-      process: {env: {}}
+      process: {env: {}},
+      Buffer: ['buffer', 'Buffer']
     })
   ],
   devServer: {
