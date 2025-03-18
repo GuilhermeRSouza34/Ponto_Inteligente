@@ -9,7 +9,7 @@ import { StyleSheet } from 'react-native';
 const App = () => {
   return (
     <AuthProvider>
-d      <SafeAreaProvider>
+      <SafeAreaProvider>
         <GestureHandlerRootView style={styles.container}>
           <NavigationContainer>
             <AppNavigator />
@@ -27,6 +27,5 @@ const styles = StyleSheet.create({
     width: '100%'
   }
 });
-};
 
 export default App;
