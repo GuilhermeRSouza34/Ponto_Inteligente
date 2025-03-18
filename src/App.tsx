@@ -17,6 +17,11 @@ const MapComponent: React.FC = () => {
   const sãoPauloPosition: [number, number] = [-23.5505, -46.6333];
   const { buses, selectedBus, setSelectedBus } = useBus();
 
+  const filteredBuses = buses.filter(bus =>
+    bus.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    bus.number.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div style={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column' }}>
       <div style={{
@@ -47,7 +52,7 @@ const MapComponent: React.FC = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {buses.map((bus) => (
+          {filteredBuses.map((bus) => (
             <Marker 
               key={bus.id} 
               position={[bus.currentLocation.latitude, bus.currentLocation.longitude]}
