@@ -1,8 +1,16 @@
-const express = require('express');
+import express from 'express';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+import cors from 'cors';
+
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-const cors = require('cors');
+const http = createServer(app);
+const io = new Server(http, {
+    cors: {
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST"]
+    }
+});
 
 app.use(cors());
 
@@ -50,4 +58,4 @@ setInterval(() => {
 
 http.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
-}); 
+});

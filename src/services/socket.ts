@@ -13,7 +13,20 @@ class SocketService {
     private static instance: SocketService;
 
     private constructor() {
-        this.socket = io('http://localhost:3000');
+        this.socket = io('http://localhost:3000', {
+            reconnection: true,
+            reconnectionAttempts: 5,
+            reconnectionDelay: 1000,
+            timeout: 10000
+        });
+
+        this.socket.on('connect_error', (error) => {
+            console.error('Erro na conexão Socket.IO:', error);
+        });
+
+        this.socket.on('reconnect', (attemptNumber) => {
+            console.log('Reconectado ao servidor após', attemptNumber, 'tentativas');
+        });
     }
 
     public static getInstance(): SocketService {
