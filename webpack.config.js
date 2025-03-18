@@ -58,7 +58,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.html'),
+      template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser',
@@ -66,6 +66,10 @@ module.exports = {
     new webpack.DefinePlugin({
       __DEV__: process.env.NODE_ENV !== 'production',
       process: {env: {}},
+      Buffer: ['buffer', 'Buffer'],
+      global: {}
+    }),
+    new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer']
     })
   ],
