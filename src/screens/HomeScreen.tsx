@@ -159,35 +159,43 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  },
+  map: {
+    width: '100%',
+    height: '100%'
+  },
+  searchContainer: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    right: 20,
+    zIndex: 1
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
     },
-    searchContainer: {
-        position: 'absolute',
-        top: 16,
-        left: 16,
-        right: 16,
-        zIndex: 1,
-    },
-    searchBar: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: colors.white,
-        borderRadius: 8,
-        padding: 12,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
-    },
-    searchInput: {
-        flex: 1,
-        marginLeft: 8,
-        fontSize: 16,
-        color: colors.gray[900],
-    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  searchInput: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
+    color: colors.gray[900]
+  },
     map: {
         flex: 1,
     },
